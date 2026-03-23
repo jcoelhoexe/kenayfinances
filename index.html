@@ -13,9 +13,39 @@
   </header>
 
   <main class="grid">
-    <!-- Painel de Totais -->
+    <section class="card salary-planner">
+      <h2>Planejamento de Metas</h2>
+      <div class="salary-inputs">
+        <label>Seu Salário (R$)
+          <input type="number" id="salaryInput" placeholder="Ex: 5000" step="0.01">
+        </label>
+        <label>Divisão (Fixo/Invest/Lazer)
+          <select id="divisionStrategy">
+            <option value="70,20,10">70 / 20 / 10 (Conservador)</option>
+            <option value="50,30,20">50 / 30 / 20 (Equilibrado)</option>
+            <option value="60,25,15">60 / 25 / 15 (Intermediário)</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="allocation-results">
+        <div class="alloc-box fixed">
+          <span class="label">Gastos Fixos</span>
+          <div id="valFixed" class="value">R$ 0,00</div>
+        </div>
+        <div class="alloc-box invest">
+          <span class="label">Investimento</span>
+          <div id="valInvest" class="value">R$ 0,00</div>
+        </div>
+        <div class="alloc-box leisure">
+          <span class="label">Lazer/Pessoal</span>
+          <div id="valLeisure" class="value">R$ 0,00</div>
+        </div>
+      </div>
+    </section>
+
     <section class="card totals">
-      <h2>Valores</h2>
+      <h2>Valores Reais</h2>
       <div class="totals-grid">
         <div class="total-box">
           <div class="label">Entradas</div>
@@ -30,38 +60,30 @@
           <div id="balanceValue" class="value">R$ 0,00</div>
         </div>
       </div>
-
       <div class="actions">
         <button id="btnNewTransaction" class="btn primary">+ Nova Transação</button>
         <button id="btnManageCategories" class="btn">Categorias</button>
       </div>
     </section>
 
-    <!-- Grafico ativo ( Despesas / Renda) -->
     <section class="card scanner">
-      <h2>Scanner Ativo</h2>
+      <h2>Scanner de Metas</h2>
       <div class="radar-wrap">
         <canvas id="scannerChart" width="320" height="320"></canvas>
-        <div class="radar-overlay">SCAN</div>
+        <div class="radar-overlay">SCANNING...</div>
       </div>
-      <p class="muted">Relação Despesas x Renda (atualiza em tempo real)</p>
+      <p class="muted">Consumo atual vs. Limite planejado</p>
     </section>
 
-    <!-- Gestão de despesas: lista + adicionar -->
     <section class="card expenses">
-      <h2>Despesas</h2>
-
-      <div class="categories-list" id="categoriesList">
-        <!-- Categorias com barras -->
-      </div>
-
+      <h2>Consumo por Categoria</h2>
+      <div class="categories-list" id="categoriesList"></div>
       <div class="expense-actions">
-        <button id="btnAddExpense" class="btn primary small">+ Adicionar Despesa</button>
-        <button id="btnAddIncome" class="btn small">+ Adicionar Entrada</button>
+        <button id="btnAddExpense" class="btn primary small">+ Despesa</button>
+        <button id="btnAddIncome" class="btn small">+ Entrada</button>
       </div>
     </section>
 
-    <!-- Atividade Geral (gráfico de linhas com todos os gastos) -->
     <section class="card activity">
       <h2>Atividade Geral</h2>
       <canvas id="activityChart" width="700" height="240"></canvas>
@@ -69,56 +91,11 @@
     </section>
   </main>
 
-  <footer>
-    Desenvolvido por JBORBA • 2025
-  </footer>
+  <footer>Desenvolvido por JBORBA • 2026</footer>
 
-  <!-- Modal transação -->
-  <div id="modal" class="modal hidden">
-    <div class="modal-panel">
-      <h3 id="modalTitle">Nova Transação</h3>
-      <label>Tipo
-        <select id="modalType">
-          <option value="expense">Despesa</option>
-          <option value="income">Entrada</option>
-        </select>
-      </label>
-      <label>Categoria
-        <select id="modalCategory"></select>
-      </label>
-      <label>Descrição
-        <input id="modalDescription" placeholder="Ex: Mercado, Salário..." />
-      </label>
-      <label>Valor (R$)
-        <input id="modalAmount" type="number" step="0.01" />
-      </label>
-      <label>Data
-        <input id="modalDate" type="date" />
-      </label>
-
-      <div class="modal-actions">
-        <button id="modalCancel" class="btn">Cancelar</button>
-        <button id="modalSave" class="btn primary">Salvar</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal categorias -->
-  <div id="modalCat" class="modal hidden">
-    <div class="modal-panel">
-      <h3>Gerenciar Categorias</h3>
-      <div id="catList"></div>
-      <div class="cat-add">
-        <input id="newCatName" placeholder="Nova categoria (Ex: Lazer)" />
-        <button id="addCatBtn" class="btn primary">Adicionar</button>
-      </div>
-      <div class="modal-actions">
-        <button id="closeCat" class="btn">Fechar</button>
-      </div>
-    </div>
-  </div>
+  <div id="modal" class="modal hidden">...</div>
+  <div id="modalCat" class="modal hidden">...</div>
 
   <script src="script.js"></script>
 </body>
 </html>
-
